@@ -1,4 +1,4 @@
-package main
+package glinq
 
 // Where return slice of items where item in slice satisfies func
 func Where[T comparable](s []T, f func(T) bool) []T {

@@ -1,4 +1,4 @@
-package main
+package glinq
 
 // Index returns index of item if found in slice else returns -1
 func Index[T comparable](term T, s []T) int {

@@ -4,6 +4,6 @@ import (
 	"fmt"
 )
 
-func main() {
+func glinq() {
 	fmt.Println("nyaa")
 }

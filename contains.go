@@ -1,4 +1,4 @@
-package main
+package glinq
 
 // Contains returns true if term is contained in slice, else false
 func Contains[T comparable](term T, s []T) bool {
