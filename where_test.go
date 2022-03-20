@@ -1,6 +1,11 @@
 package glinq
 
-import "testing"
+import (
+	"strings"
+	"testing"
+
+	"github.com/rlarkin212/glinq/internal"
+)
 
 type wfun[T comparable] func(v T) bool
 
@@ -34,11 +39,42 @@ var whereTestDataInt = []whereTest[int]{
 	},
 }
 
-func TestWhereInt(t *testing.T) {
+var whereTestDataString = []whereTest[string]{
+	{
+		input: []string{"a", "b", "c", "d", "abcde", "abxyz", "vwxyz"},
+		fun: func(v string) bool {
+			return v == "a"
+		},
+		expected: []string{"a"},
+	},
+	{
+		input: []string{"a", "b", "c", "d", "abcde", "abxyz", "vwxyz"},
+		fun: func(v string) bool {
+			return strings.HasPrefix(v, "ab")
+		},
+		expected: []string{"abcde", "abxyz"},
+	},
+	{
+		input: []string{"a", "b", "c", "d", "abcde", "abxyz", "vwxyz"},
+		fun: func(v string) bool {
+			return strings.HasSuffix(v, "yz")
+		},
+		expected: []string{"abxyz", "vwxyz"},
+	},
+	{
+		input: []string{"a", "b", "c", "d", "abcde", "abxyz", "vwxyz"},
+		fun: func(v string) bool {
+			return strings.Contains(v, "f")
+		},
+		expected: []string{},
+	},
+}
+
+func TestWhere(t *testing.T) {
 	for _, test := range whereTestDataInt {
 		actual := Where(test.input, test.fun)
 
-		if len(actual) != len(test.expected) && actual[0] != test.expected[0] {
+		if ok := internal.SliceCompare(test.expected, actual); !ok {
 			t.Errorf("expected %v; actual %v", test.expected, actual)
 			t.Fail()
 		}

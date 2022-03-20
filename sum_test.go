@@ -45,9 +45,7 @@ func TestSumInt(t *testing.T) {
 			t.Fail()
 		}
 	}
-}
 
-func TestSumUInt(t *testing.T) {
 	for _, test := range sumTestDataUInt {
 		actual := Sum(test.input)
 
@@ -56,9 +54,7 @@ func TestSumUInt(t *testing.T) {
 			t.Fail()
 		}
 	}
-}
 
-func TestSumFloat32(t *testing.T) {
 	for _, test := range sumTestDataFloat32 {
 		actual := Sum(test.input)
 

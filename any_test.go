@@ -61,7 +61,7 @@ var anyTestDataString = []anyTest[string]{
 	},
 }
 
-func TestAnyInt(t *testing.T) {
+func TestAny(t *testing.T) {
 	for _, test := range anyTestDataInt {
 		actual := Any(test.input, test.fun)
 
@@ -70,9 +70,7 @@ func TestAnyInt(t *testing.T) {
 			t.Fail()
 		}
 	}
-}
 
-func TestAnyString(t *testing.T) {
 	for _, test := range anyTestDataString {
 		actual := Any(test.input, test.fun)
 

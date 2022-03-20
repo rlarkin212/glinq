@@ -53,9 +53,7 @@ func TestIndexInt(t *testing.T) {
 			t.Fail()
 		}
 	}
-}
 
-func TestIndexString(t *testing.T) {
 	for _, test := range indexTestDataString {
 		actual := Index(test.term, test.input)
 

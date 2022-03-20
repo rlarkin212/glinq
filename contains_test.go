@@ -36,7 +36,7 @@ var containsTestDataString = []containsTest[string]{
 	},
 }
 
-func TestContainsInt(t *testing.T) {
+func TestContains(t *testing.T) {
 	for _, test := range containsTestDataInt {
 		actual := Contains(test.term, test.input)
 
@@ -45,9 +45,7 @@ func TestContainsInt(t *testing.T) {
 			t.Fail()
 		}
 	}
-}
 
-func TestContainsString(t *testing.T) {
 	for _, test := range containsTestDataString {
 		actual := Contains(test.term, test.input)
 
