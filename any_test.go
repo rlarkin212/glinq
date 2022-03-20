@@ -5,11 +5,11 @@ import (
 	"testing"
 )
 
-type f[T comparable] func(v T) bool
+type afun[T comparable] func(v T) bool
 
 type anyTest[T comparable] struct {
 	input    []T
-	fun      f[T]
+	fun      afun[T]
 	expected bool
 }
 
@@ -63,15 +63,6 @@ var anyTestDataString = []anyTest[string]{
 
 func TestAnyInt(t *testing.T) {
 	for _, test := range anyTestDataInt {
-		actual := Any(test.input, test.fun)
-
-		if actual != test.expected {
-			t.Errorf("expected %v; actual %v", test.expected, actual)
-			t.Fail()
-		}
-	}
-
-	for _, test := range anyTestDataString {
 		actual := Any(test.input, test.fun)
 
 		if actual != test.expected {
