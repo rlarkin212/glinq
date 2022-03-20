@@ -1,4 +1,4 @@
-package pkg
+package main
 
 func Index[T comparable](term T, s []T) int {
 	for i, x := range s {

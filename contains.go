@@ -1,4 +1,4 @@
-package pkg
+package main
 
 func Contains[T comparable](term T, s []T) bool {
 	for _, x := range s {

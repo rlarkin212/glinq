@@ -1,4 +1,4 @@
-package pkg
+package main
 
 func Any[T comparable](s []T, f func(T) bool) bool {
 	for _, x := range s {
