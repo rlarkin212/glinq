@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-type afun[T comparable] func(v T) bool
+type afun[T comparable] func(x T) bool
 
 type anyTest[T comparable] struct {
 	input    []T
@@ -16,22 +16,22 @@ type anyTest[T comparable] struct {
 var anyTestDataInt = []anyTest[int]{
 	{
 		input: []int{1, 2, 3, 4, 5},
-		fun: func(v int) bool {
-			return v+1 == 2
+		fun: func(x int) bool {
+			return x+1 == 2
 		},
 		expected: true,
 	},
 	{
 		input: []int{1, 2, 3, 4, 5},
-		fun: func(v int) bool {
-			return v*2 == 2
+		fun: func(x int) bool {
+			return x*2 == 2
 		},
 		expected: true,
 	},
 	{
 		input: []int{1, 2, 3, 4, 5},
-		fun: func(v int) bool {
-			return v+1000 == 2
+		fun: func(x int) bool {
+			return x+1000 == 2
 		},
 		expected: false,
 	},
@@ -40,22 +40,22 @@ var anyTestDataInt = []anyTest[int]{
 var anyTestDataString = []anyTest[string]{
 	{
 		input: []string{"a", "b", "c", "d", "e"},
-		fun: func(v string) bool {
-			return v == "a"
+		fun: func(x string) bool {
+			return x == "a"
 		},
 		expected: true,
 	},
 	{
 		input: []string{"a", "b", "c", "d", "e"},
-		fun: func(v string) bool {
-			return v == "z"
+		fun: func(x string) bool {
+			return x == "z"
 		},
 		expected: false,
 	},
 	{
 		input: []string{"a", "b", "c", "d", "e", "abcde"},
-		fun: func(v string) bool {
-			return strings.HasPrefix(v, "ab")
+		fun: func(x string) bool {
+			return strings.HasPrefix(x, "ab")
 		},
 		expected: true,
 	},

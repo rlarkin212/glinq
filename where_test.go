@@ -7,7 +7,7 @@ import (
 	"github.com/rlarkin212/glinq/internal"
 )
 
-type wfun[T comparable] func(v T) bool
+type wfun[T comparable] func(x T) bool
 
 type whereTest[T comparable] struct {
 	input    []T
@@ -18,22 +18,22 @@ type whereTest[T comparable] struct {
 var whereTestDataInt = []whereTest[int]{
 	{
 		input: []int{1, 2, 3, 4, 5},
-		fun: func(v int) bool {
-			return v/1 == 2
+		fun: func(x int) bool {
+			return x/1 == 2
 		},
 		expected: []int{2},
 	},
 	{
 		input: []int{1, 2, 3, 4, 5},
-		fun: func(v int) bool {
-			return v*2 == 2 || v+1 == 2
+		fun: func(x int) bool {
+			return x*2 == 2 || x+1 == 2
 		},
 		expected: []int{1},
 	},
 	{
 		input: []int{1, 2, 3, 4, 5},
-		fun: func(v int) bool {
-			return v+1000 == 2
+		fun: func(x int) bool {
+			return x+1000 == 2
 		},
 		expected: []int{},
 	},
@@ -42,29 +42,29 @@ var whereTestDataInt = []whereTest[int]{
 var whereTestDataString = []whereTest[string]{
 	{
 		input: []string{"a", "b", "c", "d", "abcde", "abxyz", "vwxyz"},
-		fun: func(v string) bool {
-			return v == "a"
+		fun: func(x string) bool {
+			return x == "a"
 		},
 		expected: []string{"a"},
 	},
 	{
 		input: []string{"a", "b", "c", "d", "abcde", "abxyz", "vwxyz"},
-		fun: func(v string) bool {
-			return strings.HasPrefix(v, "ab")
+		fun: func(x string) bool {
+			return strings.HasPrefix(x, "ab")
 		},
 		expected: []string{"abcde", "abxyz"},
 	},
 	{
 		input: []string{"a", "b", "c", "d", "abcde", "abxyz", "vwxyz"},
-		fun: func(v string) bool {
-			return strings.HasSuffix(v, "yz")
+		fun: func(x string) bool {
+			return strings.HasSuffix(x, "yz")
 		},
 		expected: []string{"abxyz", "vwxyz"},
 	},
 	{
 		input: []string{"a", "b", "c", "d", "abcde", "abxyz", "vwxyz"},
-		fun: func(v string) bool {
-			return strings.Contains(v, "f")
+		fun: func(x string) bool {
+			return strings.Contains(x, "f")
 		},
 		expected: []string{},
 	},

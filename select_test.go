@@ -2,67 +2,64 @@ package glinq
 
 import (
 	"testing"
+
+	te "github.com/rlarkin212/glinq/test"
 )
 
-type sfun[T any, V any] func(v T) V
+type sfun[T any, T2 any] func(x T) T2
 
-type selectTest[T any, V any] struct {
+type selectTest[T any, T2 any] struct {
 	input    []T
-	fun      sfun[T, V]
-	expected []V
+	fun      sfun[T, T2]
+	expected []T2
 }
 
-type user struct {
-	name string
-	age  int
-}
-
-var selectTestDataUser = []selectTest[user, any]{
+var selectTestDataUser = []selectTest[te.User, any]{
 	{
-		input: []user{
+		input: []te.User{
 			{
-				name: "name1",
-				age:  1,
+				Name: "name1",
+				Age:  1,
 			},
 			{
-				name: "name2",
-				age:  2,
+				Name: "name2",
+				Age:  2,
 			},
 			{
-				name: "name3",
-				age:  3,
+				Name: "name3",
+				Age:  3,
 			},
 			{
-				name: "name4",
-				age:  4,
+				Name: "name4",
+				Age:  4,
 			},
 		},
-		fun: func(v user) any {
-			return v.name
+		fun: func(x te.User) any {
+			return x.Name
 		},
 		expected: []any{"name1", "name2", "name3", "name4"},
 	},
 	{
-		input: []user{
+		input: []te.User{
 			{
-				name: "name1",
-				age:  1,
+				Name: "name1",
+				Age:  1,
 			},
 			{
-				name: "name2",
-				age:  2,
+				Name: "name2",
+				Age:  2,
 			},
 			{
-				name: "name3",
-				age:  3,
+				Name: "name3",
+				Age:  3,
 			},
 			{
-				name: "name4",
-				age:  4,
+				Name: "name4",
+				Age:  4,
 			},
 		},
-		fun: func(v user) any {
-			return v.age
+		fun: func(x te.User) any {
+			return x.Age
 		},
 		expected: []any{1, 2, 3, 4},
 	},

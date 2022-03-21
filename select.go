@@ -1,12 +1,12 @@
 package glinq
 
 // Select return slice of V based on supplied func
-func Select[T any, V any](s []T, f func(T) V) []V {
-	var ret []V
+func Select[T any, T2 any](s []T, f func(T) T2) []T2 {
+	var ret []T2
 
 	for _, x := range s {
-		v := f(x)
-		ret = append(ret, v)
+		val := f(x)
+		ret = append(ret, val)
 	}
 
 	return ret
