@@ -1,5 +1,6 @@
 package glinq
 
+//Max returns max value in slice
 func Max[T Number](s []T) T {
 	var max T
 

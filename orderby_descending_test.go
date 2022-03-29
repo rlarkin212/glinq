@@ -104,6 +104,15 @@ var orderByDescendingTestDataUserString = []orderByTest[te.User, string]{
 		},
 	},
 }
+var orderByDescendingTestDataString = []orderByTest[string, string]{
+	{
+		input: []string{"z", "b", "v", "c"},
+		fun: func(x string) string {
+			return x
+		},
+		expected: []string{"z", "v", "c", "b"},
+	},
+}
 
 func TestOrderByDescending(t *testing.T) {
 	for _, test := range orderByDescendingTestDataUserInt {
@@ -116,6 +125,15 @@ func TestOrderByDescending(t *testing.T) {
 	}
 
 	for _, test := range orderByDescendingTestDataUserString {
+		actual := OrderByDescending(test.input, test.fun)
+
+		if ok := internal.SliceCompare(test.expected, actual); !ok {
+			t.Errorf("expected %v; actual %v", test.expected, actual)
+			t.Fail()
+		}
+	}
+
+	for _, test := range orderByDescendingTestDataString {
 		actual := OrderByDescending(test.input, test.fun)
 
 		if ok := internal.SliceCompare(test.expected, actual); !ok {

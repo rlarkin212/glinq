@@ -1,5 +1,6 @@
 package glinq
 
+// Average return the average of items in slice
 func Average[T Number](s []T) float64 {
 	n := len(s)
 	var sum float64

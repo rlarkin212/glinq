@@ -1,5 +1,8 @@
 # Glinq
 [![Go Reference](https://pkg.go.dev/badge/github.com/rlarkin212/glinq.svg)](https://pkg.go.dev/github.com/rlarkin212/glinq)
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/rlarkin212/glinq)
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/rlarkin212/glinq)
+
 
 Go implemention of LINQ using generics
 

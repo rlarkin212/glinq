@@ -5,41 +5,41 @@ import (
 	"testing"
 )
 
-type anyfun[T comparable] func(x T) bool
+type allfun[T comparable] func(x T) bool
 
-type anyTest[T comparable] struct {
+type allTest[T comparable] struct {
 	input    []T
-	fun      anyfun[T]
+	fun      allfun[T]
 	expected bool
 }
 
-var anyTestDataInt = []anyTest[int]{
+var allTestDataInt = []allTest[int]{
+	{
+		input: []int{4},
+		fun: func(x int) bool {
+			return x-2 == 2
+		},
+		expected: true,
+	},
 	{
 		input: []int{1, 2, 3, 4, 5},
 		fun: func(x int) bool {
 			return x+1 == 2
 		},
-		expected: true,
-	},
-	{
-		input: []int{1, 2, 3, 4, 5},
-		fun: func(x int) bool {
-			return x*2 == 2
-		},
-		expected: true,
-	},
-	{
-		input: []int{1, 2, 3, 4, 5},
-		fun: func(x int) bool {
-			return x+1000 == 2
-		},
 		expected: false,
+	},
+	{
+		input: []int{5, 5, 5, 5, 5},
+		fun: func(x int) bool {
+			return x == 5
+		},
+		expected: true,
 	},
 }
 
-var anyTestDataString = []anyTest[string]{
+var allTestDataString = []allTest[string]{
 	{
-		input: []string{"a", "b", "c", "d", "e"},
+		input: []string{"a", "a"},
 		fun: func(x string) bool {
 			return x == "a"
 		},
@@ -53,7 +53,7 @@ var anyTestDataString = []anyTest[string]{
 		expected: false,
 	},
 	{
-		input: []string{"a", "b", "c", "d", "e", "abcde"},
+		input: []string{"ab", "ab", "abc", "abd", "abe", "abcde"},
 		fun: func(x string) bool {
 			return strings.HasPrefix(x, "ab")
 		},
@@ -61,9 +61,9 @@ var anyTestDataString = []anyTest[string]{
 	},
 }
 
-func TestAny(t *testing.T) {
-	for _, test := range anyTestDataInt {
-		actual := Any(test.input, test.fun)
+func TestAll(t *testing.T) {
+	for _, test := range allTestDataInt {
+		actual := All(test.input, test.fun)
 
 		if actual != test.expected {
 			t.Errorf("expected %v; actual %v", test.expected, actual)
@@ -71,8 +71,8 @@ func TestAny(t *testing.T) {
 		}
 	}
 
-	for _, test := range anyTestDataString {
-		actual := Any(test.input, test.fun)
+	for _, test := range allTestDataString {
+		actual := All(test.input, test.fun)
 
 		if actual != test.expected {
 			t.Errorf("expected %v; actual %v", test.expected, actual)

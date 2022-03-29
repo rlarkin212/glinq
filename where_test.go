@@ -11,7 +11,7 @@ type wfun[T comparable] func(x T) bool
 
 type whereTest[T comparable] struct {
 	input    []T
-	fun      afun[T]
+	fun      wfun[T]
 	expected []T
 }
 

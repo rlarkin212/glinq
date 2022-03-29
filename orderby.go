@@ -6,6 +6,7 @@ import (
 	"golang.org/x/exp/constraints"
 )
 
+// OrderByD returns slice with items ordered by returned item in func in ascending order
 func OrderBy[T any, T2 constraints.Ordered](s []T, f func(x T) T2) []T {
 	sort.Slice(s, func(i, j int) bool {
 		item1 := f(s[i])
