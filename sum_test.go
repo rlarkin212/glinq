@@ -36,7 +36,7 @@ var sumTestDataFloat32 = []sumTest[float32]{
 	},
 }
 
-func TestSumInt(t *testing.T) {
+func TestSum(t *testing.T) {
 	for _, test := range sumTestDataInt {
 		actual := Sum(test.input)
 

@@ -82,7 +82,6 @@ func TestJoinWhere(t *testing.T) {
 	for _, test := range joinWhereTestDataInt {
 		actual := JoinWhere(test.fun, test.input...)
 
-		fmt.Println(actual)
 		if ok := internal.SliceCompare(test.expected, actual); !ok {
 			t.Errorf("expected %v; actual %v", test.expected, actual)
 			t.Fail()
