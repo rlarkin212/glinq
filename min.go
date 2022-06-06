@@ -1,5 +1,6 @@
 package glinq
 
+// Min returns min value of slice
 func Min[T Number](s []T) T {
 	var min T
 

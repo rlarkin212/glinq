@@ -1,6 +1,6 @@
 package glinq
 
-//Distinct returns slice of distinct values
+// Distinct returns slice of distinct values
 func Distinct[T comparable](s []T) []T {
 	var res []T
 

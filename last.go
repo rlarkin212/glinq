@@ -2,6 +2,7 @@ package glinq
 
 import "errors"
 
+// Last returns last item in slice or error if slice contains no items
 func Last[T any](s []T) (T, error) {
 	var res T
 
@@ -14,6 +15,7 @@ func Last[T any](s []T) (T, error) {
 	return res, nil
 }
 
+// LastWhere returns last item in slice in slice that satisfies func or error if slice contains no items
 func LastWhere[T any](s []T, f func(x T) bool) (T, error) {
 	var res T
 

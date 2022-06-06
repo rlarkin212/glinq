@@ -79,4 +79,13 @@ func TestWhere(t *testing.T) {
 			t.Fail()
 		}
 	}
+
+	for _, test := range whereTestDataString {
+		actual := Where(test.input, test.fun)
+
+		if ok := internal.SliceCompare(test.expected, actual); !ok {
+			t.Errorf("expected %v; actual %v", test.expected, actual)
+			t.Fail()
+		}
+	}
 }

@@ -4,7 +4,6 @@ import (
 	"testing"
 
 	"github.com/rlarkin212/glinq/internal"
-	"github.com/rlarkin212/glinq/test"
 	te "github.com/rlarkin212/glinq/test"
 	"golang.org/x/exp/constraints"
 )
@@ -13,11 +12,11 @@ type obdfun[T any, T2 any] func(x T) T2
 
 type orderByDescendingTest[T any, T2 constraints.Ordered] struct {
 	input    []T
-	fun      obfun[T, T2]
+	fun      obdfun[T, T2]
 	expected []T
 }
 
-var orderByDescendingTestDataUserInt = []orderByTest[te.User, int]{
+var orderByDescendingTestDataUserInt = []orderByDescendingTest[te.User, int]{
 	{
 		input: []te.User{
 			{
@@ -37,10 +36,10 @@ var orderByDescendingTestDataUserInt = []orderByTest[te.User, int]{
 				Age:  1,
 			},
 		},
-		fun: func(x test.User) int {
+		fun: func(x te.User) int {
 			return x.Age
 		},
-		expected: []test.User{
+		expected: []te.User{
 			{
 				Name: "a",
 				Age:  100,
@@ -61,7 +60,7 @@ var orderByDescendingTestDataUserInt = []orderByTest[te.User, int]{
 	},
 }
 
-var orderByDescendingTestDataUserString = []orderByTest[te.User, string]{
+var orderByDescendingTestDataUserString = []orderByDescendingTest[te.User, string]{
 	{
 		input: []te.User{
 			{
@@ -81,10 +80,10 @@ var orderByDescendingTestDataUserString = []orderByTest[te.User, string]{
 				Age:  1,
 			},
 		},
-		fun: func(x test.User) string {
+		fun: func(x te.User) string {
 			return x.Name
 		},
-		expected: []test.User{
+		expected: []te.User{
 			{
 				Name: "z",
 				Age:  12,

@@ -16,7 +16,7 @@ type lastTest[T any] struct {
 
 type lastWhereTest[T any] struct {
 	input     []T
-	fun       firstWhereFun[T]
+	fun       lastWhereFun[T]
 	expected  T
 	expectErr bool
 }

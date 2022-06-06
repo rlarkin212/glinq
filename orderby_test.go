@@ -4,7 +4,6 @@ import (
 	"testing"
 
 	"github.com/rlarkin212/glinq/internal"
-	"github.com/rlarkin212/glinq/test"
 	te "github.com/rlarkin212/glinq/test"
 	"golang.org/x/exp/constraints"
 )
@@ -37,10 +36,10 @@ var orderByTestDataUserInt = []orderByTest[te.User, int]{
 				Age:  1,
 			},
 		},
-		fun: func(x test.User) int {
+		fun: func(x te.User) int {
 			return x.Age
 		},
-		expected: []test.User{
+		expected: []te.User{
 			{
 				Name: "y",
 				Age:  1,
@@ -81,10 +80,10 @@ var orderByTestDataUserString = []orderByTest[te.User, string]{
 				Age:  1,
 			},
 		},
-		fun: func(x test.User) string {
+		fun: func(x te.User) string {
 			return x.Name
 		},
-		expected: []test.User{
+		expected: []te.User{
 			{
 				Name: "a",
 				Age:  100,
