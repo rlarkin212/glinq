@@ -1,7 +1,6 @@
 package glinq
 
 import (
-	"fmt"
 	"testing"
 
 	"github.com/rlarkin212/glinq/internal"
@@ -70,7 +69,6 @@ func TestJoin(t *testing.T) {
 	for _, test := range joinTestDataInt {
 		actual := Join(test.input...)
 
-		fmt.Println(actual)
 		if ok := internal.SliceCompare(test.expected, actual); !ok {
 			t.Errorf("expected %v; actual %v", test.expected, actual)
 			t.Fail()

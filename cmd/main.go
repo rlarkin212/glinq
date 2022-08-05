@@ -31,6 +31,17 @@ func main() {
 		},
 	}
 
+	users1 := []user{
+		{
+			name: "a",
+			age:  20,
+		},
+		{
+			name: "b",
+			age:  12,
+		},
+	}
+
 	userNames := glinq.Select(users, func(x user) string {
 		return x.name
 	})
@@ -66,4 +77,8 @@ func main() {
 	})
 	fmt.Println(orderByAgeDescending)
 	//output: [{d 90} {a 20} {b 12} {c 5}]
+
+	intersect := glinq.Intersct(users, users1)
+	fmt.Println(intersect)
+	//output: [{a 20} {b 12}]
 }
